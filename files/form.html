@@ -1,0 +1,85 @@
+<!doctype html>
+<html> 
+    <head>
+        <link rel="stylesheet" href="./style.css"/>
+
+<script>
+window.onload=()=>{
+const sign=document.querySelector("#signup_btn");
+const log=document.querySelector("#login_btn");
+const signup=document.querySelector("#signup");
+const login=document.querySelector("#login")
+
+sign.addEventListener("click",function(){
+signup.style.display="inline";
+login.style.dislay="none";
+login.style.visibility="hidden"
+signup.style.visibility="visible"
+})
+
+log.addEventListener("click",function(){
+    login.style.display="inline";
+    signup.style.display="none";
+    signup.style.visibility="hidden"
+    login.style.visibility="visible"
+
+
+})
+
+const pass1=document.getElementById("pass1")
+const pass2= document.querySelector("#pass2")
+const chek=document.querySelector("#chek")
+pass2.addEventListener("blur", ()=>{
+        if(pass1.value!=pass2.value){
+            chek.innerText="Passwords do not match"
+            chek.style.color="red"
+        }
+        else if(pass1.value==pass2.value){
+        chek.innerText="Good Password"
+        chek.style.color="green"
+        }
+        
+})
+}
+</script>
+
+
+    </head>
+    <body>
+        <div>
+            <h2>Form page</h2>
+        </div>
+        <div>
+        <p><button id="signup_btn">Create an account</button> or <button id="login_btn">log in</button> to your account if you have one.</p>
+        </div>
+        <div>
+        
+        <form id="signup" method="POST">
+            
+        <input placeholder="First Name" name="fname" value='Solomon' />
+            <br>
+            <input placeholder="Last Name" value='Akes' name="lname"/>
+            <br>
+            <input placeholder="Gender" value='male' name="gender"/>
+            <br>
+            <input placeholder="Skill" value='prog' name="skill"/>
+            <br>
+            <input placeholder="Age" value='18' name="age" type="number"/>
+            <br>
+            <input id="pass1" name="pass" type='password'/>
+            <input id="pass2" type="password"/>
+            <span id="chek" style="font-size:10px;"></span> 
+                <input type="submit" class="submit" value="Sign up">
+           
+        </form>
+
+        <form action="b" id="login" method="post">
+        <input placeholder="First Name" name="fname" value="Solomon"/><br>
+        <input placeholder="Last Name" value="Akes" name="lname"/><br>
+        <input type="password" placeholer="password" name="pass"/><br>
+        <input type="submit" class="submit" value="Log in"/>
+        </form>
+        </div>
+            </div>
+    </body>
+</html>
