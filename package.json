@@ -2,10 +2,10 @@
   "name": "node",
   "version": "1.0.0",
   "description": "A node server",
-  "main": "server.js",
+  "main": "monser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node monser.js",
     "serve": "nodemon server.js",
     "chat": "nodemon chat.js",
     "chat2": "nodemon chat2.js",
