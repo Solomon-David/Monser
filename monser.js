@@ -24,11 +24,11 @@ fs.createReadStream(url).pipe(res)
 //res.end()
 }
 
-app.get("/a",form)
+app.get("/",form)
 
 
 
-app.post("/a",(req,res)=>{
+app.post("/",(req,res)=>{
     var r=req.body
    async function hashpass(p){
         let result=await bcrypt.hash(p,8)
