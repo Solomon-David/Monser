@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 
 const url=process.env.MONGODB_URI|| "mongodb://127.0.0.1:27017"
-
+//const url="mongodb+srv://SolomonDavid:SolomonDavidAkesobia@friends.xgwi7iz.mongodb.net/profiles?retryWrites=true&w=majority"
 
 const dbname="profiles"
 
@@ -14,10 +14,10 @@ const Person= mongoose.model("Friends",{
     skill:{type:String},
     age:{type:Number},
     password:{type:String,
-     required:true}
+     }
 })
 
-console.log(`Mongoose database started for ${dbname}`)
+console.log(`Mongoose database started for ${dbname} at ${url}`)
 
 /*const josh=new Person({
     name:"Joshua",

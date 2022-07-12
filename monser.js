@@ -28,25 +28,17 @@ app.get("/",form)
 
 
 
-app.post("/",(req,res)=>{
+app.post("/", async(req,res)=>{
     var r=req.body
    async function hashpass(p){
         let result=await bcrypt.hash(p,8)
         console.log("Hashing complete")
         return result
     }
-    const hashed=hashpass(r.pass)
+    const hashed= await hashpass(r.pass)
   //  const hashed= await bcrypt.hash(r.pass,8)
     console.log(typeof(hashed))
     
-  /*friend.exists({lname:r.lname}, (err,doc)=>{
-if(err){console.log(err)}
-if(doc=="null"){
-
-else{
-    console.log("This user already exists")
-}
-})*/
 
 friend.find({fname:r.fname, lname:r.lname}, function(err,item){
     if(err){console.log(err)}
@@ -63,30 +55,21 @@ friend.find({fname:r.fname, lname:r.lname}, function(err,item){
         
         solo.save().then(()=>{
             console.log(`${req.body.fname} ${req.body.lname} has been added to the database`)
-        
+res.end(`${req.body.fname} ${req.body.lname} has been added as a user.`)        
         }).catch((err)=>console.log(err))
-        
-
-        
     }
     else{
-console.log("user already exists")
+        res.end("This user already exists.")
+console.log(`user already exists`)
     }
 })
 
 })
 //show("hi")
 
-async function ismatch(pass, user){
-    var match=await bcrypt.compare(pass, user.password)
-      //var match=(pass==user.password)
-                console.log(user)
-                console.log(pass)
-                
-}
 
 app.post("/b", (req,res)=>{
- //   res.send("hello")
+ 
     var fname=req.body.fname
     var lname=req.body.lname
     var pass=req.body.pass
@@ -94,14 +77,15 @@ app.post("/b", (req,res)=>{
     friend.find({fname:fname}, async (err,finds)=>{
         if(err){console.log(err)}
         for(var find of finds){
-            //console.log(find.lname)
-            if(find.lname==lname){
-                   // ismatch(pass, find)
-        var mat=await bcrypt.compare(pass, find.password)
-                console.log(mat)
-                //console.log("password "+pass)
-                //console.log(`name: ${fname} ${lname}`)
-                res.render("home",{
+                        if(find.lname==lname){
+                console.log(`User found: fname=${find.fname}, lname=${find.lname}, pass=${find.password}`)
+        
+               await bcrypt.compare(pass,find.password, (err,mat)=>{
+                if(err){console.log(err)}    
+           if(mat){
+        //        console.log(mat)
+                
+            res.render("home",{
                     fname:find.fname,
                     lname:find.lname,
                     gender:find.gender,
@@ -109,11 +93,18 @@ app.post("/b", (req,res)=>{
                     age:find.age
     })
     console.log("Logged in successfully")
-     break;
+           }
+        else{
+            res.end("The password and profile did not match")
+            console.log("The password is not a match");
+        }
+})
+break;
             }
         else{
+            res.end("An error occurred. Unable to log in.")
             console.log("Unable to log in")
-        console.log(`Fname=${find.fname}, lname=${find.lname}`)
+            //console.log(find)
         }
         }
     })
@@ -145,11 +136,9 @@ rl.on("line", function(line){
     gender=arr[3]
         switch(arr[0]){
         case "deleteOne":
-        friend.findOne({fname:arr[1], lname:arr[2]},function(err, item){
-            
-            friend.deleteOne().then((del)=>{
-                console.log(del)
-            })
+        friend.deleteOne({fname:arr[1], lname:arr[2]},function(err, item){
+            if(err){console.log(err)}
+            console.log("User been deleted.")
         })
         break;
         case "deleteMany":
