@@ -1,1 +1,1 @@
-web : node monser.js
+web: node monser.js
