@@ -1,8 +1,8 @@
 const mongoose=require("mongoose")
 
-const url=process.env.MONGODB_URI 
+//const url=process.env.MONGODB_URI 
 //const url= "mongodb://127.0.0.1:27017"
-//const url="mongodb+srv://SolomonDavid:SolomonDavidAkesobia@friends.xgwi7iz.mongodb.net/profiles?retryWrites=true&w=majority"
+const url="mongodb+srv://SolomonDavid:SolomonDavidAkesobia@friends.xgwi7iz.mongodb.net/profiles?retryWrites=true&w=majority"
 
 const dbname="profiles"
 
