@@ -6,7 +6,7 @@ const url=process.env.MONGODB_URI
 
 const dbname="profiles"
 
-mongoose.connect(`${url}/${dbname}`, {useNewUrlParser:true})
+mongoose.connect(`${url}`, {useNewUrlParser:true})
 
 const Person= mongoose.model("Friends",{
     fname:{type:String},
