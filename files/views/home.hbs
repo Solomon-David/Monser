@@ -1,9 +1,36 @@
 <!doctype html>
 <head>
-    <link rel="stylesheet" href="/style.css"/>
+    <link rel="stylesheet" href="/home.css"/>
+    <script>
+ window.onload=()=>{
+     var intro=document.querySelector("#intro");
+    var item=["{{fname}}", "{{lname}}","{{age}}","{{gender}}","{{skill}}"]
+    var data=["First Name", "Last Name","Age","Gender","Skill"]
+    
+        for(let i=0; i<data.length; i++){
+        let str=item[i]
+        intro.innerHTML+="<tr><td class='data'>"+data[i]+":</td> <td class='item'>"+str+"</td></tr>";
+            }
+        }
+    
+
+    </script>
 </head>
 <body>
-    <div><h2>Welcome {{fname}}</h2></div>
-    <div>{{fname}} {{lname}} is a {{age}} year old {{gender}} who is also a {{skill}}</div>
+    <div>
+    <div id="frame">
+        <div id="image"><img src="/uploads/upload.jpg" id="prof_pic" alt="profile photo"/></div>
+        <div id="header"><h2 >Welcome {{fname}}</h2></div>
+    </div>
+</div>
+<div>
+    <form action="b/upload" method="POST" enctype="multipart/form-data">
+        <input name="file" type="file" id="file"/><br>
+        <input type="submit" value="Update profile photo" id="upload"/>
+    </form>
+</div>
+    
+<table id="intro">
+    </table>
 </body>
 </html>

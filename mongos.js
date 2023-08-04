@@ -1,24 +1,24 @@
 const mongoose=require("mongoose")
 
-const url=process.env.MONGODB_URI 
-//const url= "mongodb://127.0.0.1:27017"
+//const url=process.env.MONGODB_URI 
+const url= "mongodb://127.0.0.1:27017"
 //const url="mongodb+srv://SolomonDavid:SolomonDavidAkesobia@friends.xgwi7iz.mongodb.net/profiles?retryWrites=true&w=majority"
 
-const dbname="profiles"
 
 mongoose.connect(`${url}`, {useNewUrlParser:true})
 
-const Person= mongoose.model("Friends",{
+const Person=mongoose.model("Friends",{
     fname:{type:String},
     lname:{type:String},
     gender:{type:String},
     skill:{type:String},
     age:{type:Number},
     password:{type:String,
+    required:true
      }
 })
 
-console.log(`Mongoose database started for ${dbname} at ${url}`)
+console.log(`Mongoose database started for profiles at ${url}`)
 
 /*const josh=new Person({
     name:"Joshua",
