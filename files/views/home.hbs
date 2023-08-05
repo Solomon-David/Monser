@@ -11,9 +11,16 @@
         let str=item[i]
         intro.innerHTML+="<tr><td class='data'>"+data[i]+":</td> <td class='item'>"+str+"</td></tr>";
             }
+<<<<<<< HEAD
         }
     
 
+=======
+            
+            var form=document.querySelectorAll("form")[0]
+            form.setAttribute("action", "b/upload/{{id}}")
+        }
+>>>>>>> a1d05e6293076e9e7cab71fbb9e0bc76c7ae8bcc
     </script>
 </head>
 <body>
@@ -24,7 +31,11 @@
     </div>
 </div>
 <div>
+<<<<<<< HEAD
     <form action="b/upload" method="POST" enctype="multipart/form-data">
+=======
+    <form method="POST" enctype="multipart/form-data">
+>>>>>>> a1d05e6293076e9e7cab71fbb9e0bc76c7ae8bcc
         <input name="file" type="file" id="file"/><br>
         <input type="submit" value="Update profile photo" id="upload"/>
     </form>

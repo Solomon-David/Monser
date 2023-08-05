@@ -1,8 +1,13 @@
 const express=require("express")
+<<<<<<< HEAD
 //const friend=require("./mongos.js")
+=======
+const friend=require("./mongos.js")
+>>>>>>> a1d05e6293076e9e7cab71fbb9e0bc76c7ae8bcc
 const app=express()
 const dir=`${__dirname}`
 const fs=require("fs")
+<<<<<<< HEAD
 const port=3030
 const path =require('path')
 const cors=require('cors')
@@ -11,10 +16,19 @@ const cors=require('cors')
 //const url= "mongodb://127.0.0.1:27017"
 //const url="mongodb+srv://SolomonDavid:SolomonDavidAkesobia@friends.xgwi7iz.mongodb.net/profiles?retryWrites=true&w=majority"
 //const bcrypt=require("bcryptjs")
+=======
+const port=process.env.PORT || 3000
+const mongoose=require("mongoose")
+//const url=process.env.MONGODB_URI 
+const url= "mongodb://127.0.0.1:27017"
+//const url="mongodb+srv://SolomonDavid:SolomonDavidAkesobia@friends.xgwi7iz.mongodb.net/profiles?retryWrites=true&w=majority"
+const bcrypt=require("bcryptjs")
+>>>>>>> a1d05e6293076e9e7cab71fbb9e0bc76c7ae8bcc
 const readline=require("readline")
 const rl=readline.createInterface({input : process.stdin})
 
 //importing routers
+<<<<<<< HEAD
 //onst form=require("./form.js")
 //const login=require("./login.js")
 
@@ -31,6 +45,24 @@ app.use(express.urlencoded({extended:true}))
 
 
 /*function show(str){
+=======
+const form=require("./form.js")
+const login=require("./login.js")
+
+
+app.use(express.static(dir))
+//app.use(form)
+app.use(express.urlencoded({extended:true}))
+app.set("view engine","hbs")
+app.set("views", __dirname+"/files/views")
+
+
+app.use("/", form)
+app.use("/b", login)    
+
+
+function show(str){
+>>>>>>> a1d05e6293076e9e7cab71fbb9e0bc76c7ae8bcc
 friend.findOne({password:str}, (err,item)=>{
 if(err){console.log(err)}
    console.log(item.lname)  
@@ -44,7 +76,12 @@ if(err){console.log(err)}
     rl.on("line", function(line){
         arr=line.split(" ")
     let n=0
+<<<<<<< HEAD
     let coll=arr[n].toLowerCase
+=======
+    let coll=arr[n]
+    console.log(coll)
+>>>>>>> a1d05e6293076e9e7cab71fbb9e0bc76c7ae8bcc
     let command=arr[++n]
     let fname=arr[++n]
     let lname=arr[++n]
@@ -79,6 +116,7 @@ if(err){console.log(err)}
 }
     
     //end    
+<<<<<<< HEAD
 })*/
 
 
@@ -92,7 +130,10 @@ app.post("/login", (req,res)=>{
 app.get('/login', function (req,res){
     res.json({'message' : 'Hi'})
     //res.sendFile(path.join(dir,'/index.html'))
+=======
+>>>>>>> a1d05e6293076e9e7cab71fbb9e0bc76c7ae8bcc
 })
+
 
 
 app.listen(port, (err)=>{
